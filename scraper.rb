@@ -68,8 +68,10 @@ doc.css('article').each_with_index do |row, index|
 
   # Extract on_notice_to date (from the "On display until" text)
   on_notice_to = row.at_css('.applications-closing.display-until.small-text.display-until-date').text.strip
-  on_notice_to = on_notice_to.match(/\d{1,2} [A-Za-z]+ \d{4}/)&.captures&.first  # Extract only the date part (e.g., 11 February 2025)
+  on_notice_to = on_notice_to.sub('On display until ', '')  # Remove the "On display until" part
+  # on_notice_to = on_notice_to.match(/\d{1,2} [A-Za-z]+ \d{4}/)&.captures&.first  # Extract the date part (e.g., 11 February 2025)
   # on_notice_to = Date.strptime(on_notice_to, "%d %B %Y").to_s  # Convert to ISO 8601 format
+
 
   # Extract document URL
   document_description = row.at_css('a')['href']
