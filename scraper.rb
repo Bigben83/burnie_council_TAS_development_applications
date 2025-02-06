@@ -68,7 +68,7 @@ doc.css('article').each_with_index do |row, index|
 
   # Extract on_notice_to date (from the "On display until" text)
   on_notice_to = row.at_css('.applications-closing.display-until.small-text.display-until-date').text.strip
-  on_notice_to = Date.strptime(on_notice_to, "%d %B %Y").to_s  # Convert to ISO 8601 format
+  # on_notice_to = Date.strptime(on_notice_to, "%d %B %Y").to_s  # Convert to ISO 8601 format
 
   # Extract document URL
   document_description = row.at_css('a')['href']
